@@ -1,6 +1,8 @@
 package com.example.lesoon1a3
 
+import android.graphics.Color
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -17,7 +19,7 @@ class MainActivity : AppCompatActivity(),CounterView {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(binding.root)
 
         presenter.attachView(this)
 
@@ -31,12 +33,25 @@ class MainActivity : AppCompatActivity(),CounterView {
                 presenter.onDecrement()
             }
         }
-
     }
 
     override fun updateCount(count: Int) {
         binding.counter.text = count.toString()
 
+        presenter.onEqualToTen()
+        presenter.onEqualToFifteen()
+    }
+
+    override fun showToast() {
+        Toast.makeText(this,"Поздравляем",Toast.LENGTH_LONG).show()
+    }
+
+    override fun turnCountToGreen() {
+        binding.counter.setTextColor(Color.GREEN)
+    }
+
+    override fun turnCountToBlack() {
+        binding.counter.setTextColor(Color.BLACK)
     }
 
     override fun onDestroy() {

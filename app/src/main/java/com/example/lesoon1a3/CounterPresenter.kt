@@ -14,6 +14,20 @@ class CounterPresenter {
         view?.updateCount(model.getResult())
     }
 
+    fun onEqualToTen(){
+        if (model.isCountEqualToTen(model.getResult())){
+            view?.showToast()
+        }
+    }
+
+    fun onEqualToFifteen(){
+        if (model.isCountEqualToFifteen(model.getResult())){
+            view?.turnCountToGreen()
+        }else{
+            view?.turnCountToBlack()
+        }
+    }
+
     fun onDecrement(){
         model.dec()
         view?.updateCount(model.getResult())

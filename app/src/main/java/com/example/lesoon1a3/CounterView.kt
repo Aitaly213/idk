@@ -4,4 +4,9 @@ interface CounterView {
 
 
     fun updateCount(count: Int)
+
+    fun showToast()
+
+    fun turnCountToGreen()
+    fun turnCountToBlack()
 }
